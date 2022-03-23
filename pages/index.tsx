@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import File from '../components/file'
-import {dataTree} from '../data/dataTree';
+import FileTree from '../components/FileTree'
+import {dataTree} from '../mock/dataTree';
 
 
 
@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
-      <File {...dataTree} />
+      <FileTree {...dataTree} />
       </div>
     </div>
   )

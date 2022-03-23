@@ -1,6 +1,8 @@
-export interface IFile {
+export interface IFileTree {
     name: string;
     id: number;
     icon: string;
-    children: IFile[];
+    arrow: string;
+    isFolder: boolean;
+    children: IFileTree[];
 }
