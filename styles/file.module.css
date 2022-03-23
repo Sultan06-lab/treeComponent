@@ -12,3 +12,7 @@
 .file__name {
     padding-left: 5px;
 }
+
+.arrow {
+    transform: rotate(90deg);
+}

@@ -1,7 +1,6 @@
 export interface IFile {
     name: string;
     id: number;
-    parentId: number;
-    isFolder: boolean;
+    icon: string;
     children: IFile[];
 }
