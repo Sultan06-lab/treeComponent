@@ -1,0 +1,14 @@
+.file{
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.file__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.file__name {
+    padding-left: 5px;
+}
