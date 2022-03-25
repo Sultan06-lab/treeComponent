@@ -1,8 +1,8 @@
 export interface IFileTree {
     name: string;
-    id: number;
-    icon: string;
-    arrow: string;
+    icon?: iconKeys;
     isFolder: boolean;
     children: IFileTree[];
 }
+
+type iconKeys = 'yellowFolder' | 'blackFolder' | 'avatar' | 'file';

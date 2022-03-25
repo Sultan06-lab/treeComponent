@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Image from 'next/image'
-import { IFileTree } from '../types/file'
+import { IFileTree } from '../types/tree'
 import { useState } from 'react'
 import styles from '../styles/file.module.css'
+import arrow from '../public/arrow.svg'
 
 
-const FileTree: React.FC<IFileTree> = ({ name, children, icon, arrow, id, isFolder, }: IFileTree) => {
+type IFileTreeProps = {
+  tree: IFileTree;
+}
+
+const FileTree: React.FC<IFileTreeProps> = ({tree}: IFileTreeProps) => {
 
   const [visibleChildren, setVisibleChildren] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-
 
   return (
     <div className={styles.file}>
@@ -19,29 +23,22 @@ const FileTree: React.FC<IFileTree> = ({ name, children, icon, arrow, id, isFold
           setOpen(!open)
         }
         } className={styles.file__item}>
-          {
-            id === 1 ?
-
-              isFolder ?
-                <Image className={open ? styles.file__bigArrow : ''} src={arrow} alt={arrow} width={10} height={10} padding-left='5px' />
-                :
-                ''
-              :
-              isFolder ?
-                <Image className={open ? '' : styles.file__smallArrow} src={arrow} alt={arrow} width={12} height={20} />
-                :
-                ''
-          }
-          <Image className={styles.file__icon} src={icon} alt='image' width={20} height={16} />
-        <span className={styles.file__name}>{name}</span>
+        {
+          tree.isFolder ?
+            <Image className={open ? '' : styles.file__arrow} src={arrow} alt={arrow} width={15} height={15} />
+            :
+            ''
+        }
+        <Image src={`/${tree.icon}.svg`} alt={tree.icon} width={20} height={16} />
+        <span className={styles.file__name}>{tree.name}</span>
       </div>
       {
-        visibleChildren && (children ?? []).map(child => (
-          <FileTree key={child.id} {...child}/>
+        visibleChildren && (tree.children ?? []).map(child => (
+          <FileTree key=
+            {child.name} tree={child} />
         ))
       }
     </div>
   )
 }
-
 export default FileTree;
