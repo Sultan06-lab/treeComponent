@@ -1,0 +1,1 @@
+export const iconKeys = ['yellowFolder', 'blackFolder', 'avatar', 'file'] as const; 
